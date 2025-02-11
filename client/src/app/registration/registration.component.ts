@@ -10,7 +10,7 @@ import { HttpService } from '../../services/http.service';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent {
-
+  itemForm!:FormGroup;
  //todo: Complete missing code..
 
 
