@@ -9,39 +9,41 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './booking-details.component.html',
   styleUrls: ['./booking-details.component.scss']
 })
-
-
 export class BookingDetailsComponent implements OnInit {
-  formModel: any = {status: null};
-  showError: boolean = false;
-  errorMessage: any;
-  eventObj: any = [];
-  assignModel: any = {};
+
+  formModel:any={status:null};
+  showError:boolean=false;
+  errorMessage:any;
+  eventObj:any=[];
+  assignModel: any={};
+
   showMessage: any;
   responseMessage: any;
-  isUpdate: any = false;
-
-  constructor(
-    public router: Router,
-    public httpService: HttpService,
-    private formBuilder: FormBuilder,
-    private authService: AuthService
-  ) {}
-
-  ngOnInit(): void {}
-
-  searchEvent(): void {
-    if (this.formModel.eventID) {
-      this.httpService.getBookingDetails(this.formModel.eventID).subscribe(
-        (data) => {
-          this.eventObj = data;
-        },
-        (error) => {
-          this.showError = true;
-          this.errorMessage = error.message;
-        }
-      );
-    }
+  isUpdate: any=false;;
+  constructor(public router:Router, public httpService:HttpService, private formBuilder: FormBuilder, private authService:AuthService) 
+   {
+      
   }
-}
+  ngOnInit(): void {
 
+  
+  }
+  searchEvent() {
+    debugger;
+    if(this.formModel.eventID!=null)
+    {
+      this.isUpdate=false;
+      this.httpService.getBookingDetails(this.formModel.eventID).subscribe((data: any) => {
+        this.eventObj=data;
+        console.log(this.eventObj);
+      }, error => {
+        // Handle error
+        this.showError = true;
+        this.errorMessage = "An error occurred.. Please try again later.";
+        console.error('Login error:', error);
+      });;
+    }
+  
+  }
+
+  }

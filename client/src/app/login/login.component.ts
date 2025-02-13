@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
           this.authService.SetRole(response.role);
           this.authService.SetId(response.userId);
           this.router.navigate(['/dashboard']);
+
           setTimeout(() => {
             window.location.reload();
           }, 500);
