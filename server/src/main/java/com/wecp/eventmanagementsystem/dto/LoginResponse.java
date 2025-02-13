@@ -12,11 +12,14 @@ public class LoginResponse {
 
     private String role;
 
+    private Long userId;
+
     @JsonCreator
     public LoginResponse(@JsonProperty("token") String token,
                          @JsonProperty("username") String username,
                             @JsonProperty("email") String email,
-                            @JsonProperty("role") String role) {
+                            @JsonProperty("role") String role,
+                            @JsonProperty("userId") Long userId ) {
         this.token = token;
         this.username = username;
         this.email = email;

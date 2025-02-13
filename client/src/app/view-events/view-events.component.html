@@ -1,1 +1,150 @@
-//todo: complete missing code.
+
+<div class="d-flex justify-content-between mt-4">
+    <h2 class="mb-0">Manage Events</h2>  
+  
+  </div>
+  <div class="row mt-3">
+    <div class="card">
+        <div class="card-header">
+        View & Update  Events
+          </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="mb-3">
+                        <label for="content" class="form-label ">Event ID</label>
+                        <input type="content" name ="eventID" [(ngModel)]="formModel.eventID" class="form-control" id="eventID" placeholder="Search with Event Id">                     
+                      </div>
+                </div>
+                <div class="col-md-2">
+                    <br>
+                    <button (click)="searchEvent()" class="btn btn-primary mt-1 w-100" >Search</button>
+                </div>
+            </div>
+            <form *ngIf="isUpdate" class="mb-3 mt-md-4" [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="mb-3">
+                            <label for="content" class="form-label ">Title</label>
+                            <input type="content" name ="title"formControlName="title" [(ngModel)]="formModel.title" class="form-control" id="title" placeholder="title">
+                            <div *ngIf="itemForm.controls['title'].invalid && (itemForm.controls['title'].dirty || itemForm.controls['title'].touched)"
+                            class="ng-dirty">
+                            <span *ngIf="itemForm.controls['title'].errors">
+                              <span class="text-danger">Please Enter name .</span>
+                            </span>
+                          </div>
+                          </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="mb-3">
+                            <label for="description" class="form-label ">Description</label>
+                            <input type="description" name="description"  formControlName="description" [(ngModel)]="formModel.description" class="form-control" id="description" placeholder="description">
+                            <div *ngIf="itemForm.controls['description'].invalid && (itemForm.controls['description'].dirty || itemForm.controls['description'].touched)"
+                            class="ng-dirty">
+                            <span *ngIf="itemForm.controls['description'].errors">
+                              <span class="text-danger">Please Enter description .</span>
+                            </span>
+                          </div>
+                          </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="mb-3">
+                            <label for="dateTime" class="form-label ">Date Time</label>
+                            <input type="date" name="dateTime"  formControlName="dateTime" [(ngModel)]="formModel.dateTime" class="form-control" id="dateTime" placeholder="dateTime">
+                            <div *ngIf="itemForm.controls['dateTime'].invalid && (itemForm.controls['dateTime'].dirty || itemForm.controls['dateTime'].touched)"
+                            class="ng-dirty">
+                            <span *ngIf="itemForm.controls['dateTime'].errors">
+                              <span class="text-danger">Please Enter dateTime .</span>
+                            </span>
+                          </div>
+                          </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="mb-3">
+                            <label for="location" class="form-label ">location</label>
+                            <input type="location" name="dateTime"  formControlName="location" [(ngModel)]="formModel.location" class="form-control" id="location" placeholder="location">
+                            <div *ngIf="itemForm.controls['location'].invalid && (itemForm.controls['location'].dirty || itemForm.controls['location'].touched)"
+                            class="ng-dirty">
+                            <span *ngIf="itemForm.controls['location'].errors">
+                              <span class="text-danger">Please Enter location .</span>
+                            </span>
+                          </div>
+                          </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Status</label>
+                        <select class="form-control" name="status" id="status" formControlName="status">
+                          <option value="null">Choose Status</option>
+                          <option value="Initiated">Initiated</option>
+                          <option value="Complete">Completed</option>
+                        </select>
+                        <div *ngIf="itemForm.controls['status'].invalid && (itemForm.controls['status'].dirty || itemForm.controls['status'].touched)" class="ng-dirty">
+                          <span *ngIf="itemForm.controls['status'].errors" class="text-danger">Please choose status.</span>
+                        </div>
+                      </div>
+                    <div class="col-md-2">
+                        <div class="d-grid">
+                            <br>
+                            <button class="btn btn-outline-dark mt-1" type="submit">Submit</button>
+                          </div>
+                    </div>
+                </div>
+              
+               
+              
+               
+              </form>
+              <div *ngIf="showMessage" class="alert alert-success mt-4" role="alert">
+                {{ responseMessage }}
+              </div>
+              <div *ngIf="showError" class="alert alert-danger" role="alert">
+                {{errorMessage}}
+              </div>
+        </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="card">
+        <div class="card-header">Event Information</div>
+    </div>
+    <div  class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Sr#</th>
+                        <th>Title</th>
+                        <th>Description</th> 
+                        <th>Date Time</th>                           
+                        <th>Location</th>      
+                        <th>status</th>   
+                        <th>Action</th>            
+                  
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                      <td>{{eventObj.eventID}}</td>
+                        <td>{{eventObj.title}}</td>
+                        <td>{{eventObj.description}}</td>
+                        <td>{{eventObj.dateTime | date:'dd-MMM-yyyy'}}</td>
+                        <td>{{eventObj.location}}</td>                    
+                        <td>{{eventObj.status}}</td>
+
+                        <td>
+                            <button (click)="edit(eventObj)" *ngIf="eventObj.eventID" class="btn btn-warning">Update</button>
+                        </td>
+                       
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+  </div>
+
+
+  
+
+
+

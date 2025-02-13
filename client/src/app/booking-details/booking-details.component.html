@@ -1,1 +1,23 @@
-//todo: complete missing code.
+<div class="container">
+  <form (ngSubmit)="searchEvent()">
+    <div class="form-group">
+      <label for="eventId">Event ID</label>
+      <input id="eventId" [(ngModel)]="formModel.eventId" class="form-control" name="eventId" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+ 
+  <div *ngIf="showError" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+ 
+  <div *ngIf="eventObj.length > 0">
+    <div *ngFor="let event of eventObj">
+      <p>Event Title: {{ event.title }}</p>
+      <p>Description: {{ event.description }}</p>
+      <p>Date: {{ event.dateTime | date: 'short' }}</p>
+      <p>Location: {{ event.location }}</p>
+      <p>Status: {{ event.status }}</p>
+    </div>
+  </div>
+</div>

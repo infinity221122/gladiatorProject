@@ -1,3 +1,103 @@
-a{
-    cursor: pointer;
+/* login.component.scss */
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.is-invalid {
+  border-color: #dc3545;
+}
+
+.is-required {
+  border-color: #ffc107;
+}
+
+.form-group input.ng-invalid.ng-dirty,
+.form-group input.ng-invalid.ng-touched {
+  border-color: #dc3545;
+}
+
+.form-group input.ng-valid.ng-touched,
+.form-group input.ng-valid.ng-dirty {
+  border-color: #28a745;
+}
+
+.form-group input.ng-required.ng-dirty,
+.form-group input.ng-required.ng-touched {
+  border-color: #ffc107;
+}
+
+.text-danger {
+  color: #dc3545;
+}
+
+.btn-primary {
+  display: inline-block;
+  width: 100%;
+  padding: 10px 0;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-link {
+  display: inline-block;
+  width: 100%;
+  padding: 10px 0;
+  color: #007bff;
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.btn-link:hover {
+  color: #0056b3;
+}
+
+.alert {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+a {
+  cursor: pointer;
 }

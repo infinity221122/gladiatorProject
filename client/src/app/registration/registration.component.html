@@ -1,1 +1,40 @@
-//todo: complete missing code..
+<div class="container">
+  <h2><strong>EVENT MANAGEMENT AND RESOURCE ALLOCATION PLATFORM</strong></h2>
+  <P>Please Enter your details to Register</P>
+  <form [formGroup]="itemForm" (ngSubmit)="onRegister()">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" formControlName="username" class="form-control" />
+      <div *ngIf="itemForm.get('username')?.invalid && itemForm.get('username')?.touched" class="error">
+        Username is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" formControlName="email" class="form-control" />
+      <div *ngIf="itemForm.get('email')?.invalid && itemForm.get('email')?.touched" class="error">
+        Valid email is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" formControlName="password" class="form-control" />
+      <div *ngIf="itemForm.get('password')?.invalid && itemForm.get('password')?.touched" class="error">
+        Password is required (minimum 6 characters).
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="role">Role</label>
+      <select id="role" formControlName="role" class="form-control">
+        <option *ngFor="let r of role" [value]="r">{{ r }}</option>
+      </select>
+      <div *ngIf="itemForm.get('role')?.invalid && itemForm.get('role')?.touched" class="error">
+        Role is required.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="itemForm.invalid">Register</button>
+  </form>
+  <div *ngIf="showMessage" [ngClass]="{'alert alert-success': responseMessage === 'User registered successfully', 'alert alert-danger': responseMessage !== 'User registered successfully'}">
+    {{ responseMessage }}
+  </div>
+</div>

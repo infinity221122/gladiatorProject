@@ -1,1 +1,32 @@
-//todo: complete missing code..
+<div>
+    <h1>Manage Resourse Allocation</h1>
+<div>
+    <h2>Add Resourse Allocation</h2>
+    <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+ 
+    <div>
+    <label for="eventId">Event</label>
+    <input type="text" placeholder="Choose Event" formControlName="eventId">
+    <div *ngIf="itemForm.get('eventId')?.invalid && (itemForm.get('eventId')?.dirty || itemForm.get('eventId')?.touched)">
+        <small *ngIf="itemForm.get('eventId')?.errors?.['required']">EventId is required</small>
+    </div>
+ 
+    <label for="resourceId">Resource</label>
+    <input type="text" formControlName="Choose Resourse" placeholder="type">
+    <div *ngIf="itemForm.get('resourceId')?.invalid && (itemForm.get('resourceId')?.dirty || itemForm.get('resourceId')?.touched)">
+        <small *ngIf="itemForm.get('resourceId')?.errors?.['required']">ResourceId is required</small>
+    </div>
+ 
+    <label for="quantity">Quantity</label>
+    <input type="number" formControlName="Choose Resourse" placeholder="quantity">
+    <div *ngIf="itemForm.get('quantity')?.invalid && (itemForm.get('quantity')?.dirty || itemForm.get('quantity')?.touched)">
+        <small *ngIf="itemForm.get('quantity')?.errors?.['required']">Quantity is required</small>
+    </div>
+
+</div>
+
+<button type="submit" value="submit">Submit</button>
+<div *ngIf="showMessage">{{responseMessage}}</div>
+<div *ngIf="showError">{{errorMessage}}</div>
+</form>
+</div>
