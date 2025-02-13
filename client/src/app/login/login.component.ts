@@ -3,9 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpService } from '../../services/http.service';
 import { AuthService } from '../../services/auth.service';
- 
- 
- 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -56,3 +54,4 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/registration']);
   }
 }
+

@@ -52,5 +52,6 @@ public class RegisterAndLoginController {
         User user = userService.getUserByUsername(loginRequest.getUsername());
 
         return ResponseEntity.ok(new LoginResponse(token, user.getUsername(), user.getEmail(), user.getRole(),user.getUserID()));
+
     }
 }

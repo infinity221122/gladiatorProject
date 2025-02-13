@@ -33,6 +33,7 @@ export class HttpService {
       );
     }
   
+
     // GetAllevents(): Observable<any> {
     //   const url = `${this.serverName}/api/planner/events`;
     //   const headers = new HttpHeaders({
@@ -57,7 +58,6 @@ GetAllevents(): Observable<any> {
       catchError(this.handleError)
     );
   }
-
 
   
     GetAllResources(): Observable<any> {

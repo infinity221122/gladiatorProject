@@ -20,6 +20,7 @@ export class CreateEventComponent implements OnInit {
   showMessage: any;
   responseMessage: any;
   status=['Choose Status','Initiated','Completed','Pending','Incomplete'];
+
  
   constructor(
     private router: Router,
@@ -35,12 +36,15 @@ export class CreateEventComponent implements OnInit {
       dateTime: ['',[ Validators.required,Validators.pattern(/^\d{4}-\d{2}-\d{2}$/)]],
       location: ['', Validators.required],
       status: [this.status[0], [Validators.required]]
+
     });
     this.getEvent();
   }
  
   getEvent() {
+
     this.httpService.GetAllevents().subscribe( 
+
       (data) => {
         this.eventList = data;
       },
@@ -67,5 +71,5 @@ export class CreateEventComponent implements OnInit {
       );
     }
   }
-  
+
 }

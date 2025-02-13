@@ -10,6 +10,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./booking-details.component.scss']
 })
 
+
 export class BookingDetailsComponent implements OnInit {
   formModel: any = {status: null};
   showError: boolean = false;
@@ -43,3 +44,4 @@ export class BookingDetailsComponent implements OnInit {
     }
   }
 }
+
