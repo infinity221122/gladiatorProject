@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpService } from '../../services/http.service';
 import { AuthService } from '../../services/auth.service';
+
 @Component({
   selector: 'app-resource-allocate',
   templateUrl: './resource-allocate.component.html',
@@ -37,8 +38,12 @@ export class ResourceAllocateComponent implements OnInit {
   }
  
   onSubmit(): void {
+    // debugger;
     if (this.itemForm.valid) {
       const { eventId, resourceId, quantity } = this.itemForm.value;
+      console.log('Event ID:', eventId);  // Debugging log
+      console.log('Resource ID:', resourceId);  // Debugging log
+      console.log('Quantity:', quantity);  // Debugging log
       const allocationData = { quantity };
       this.httpService.allocateResources(eventId, resourceId, allocationData).subscribe(
         (response) => {
@@ -51,6 +56,8 @@ export class ResourceAllocateComponent implements OnInit {
           this.errorMessage = 'Failed to allocate resource';
         }
       );
+    } else {
+      this.itemForm.markAllAsTouched();
     }
   }
  
@@ -58,6 +65,7 @@ export class ResourceAllocateComponent implements OnInit {
     this.httpService.GetAllevents().subscribe(
       (data) => {
         this.eventList = data;
+        console.log('Event List:', this.eventList);  // Debugging log
       },
       (error) => {
         this.showError = true;
@@ -70,6 +78,7 @@ export class ResourceAllocateComponent implements OnInit {
     this.httpService.GetAllResources().subscribe(
       (data) => {
         this.resourceList = data;
+        console.log('Resource List:', this.resourceList);  // Debugging log
       },
       (error) => {
         this.showError = true;

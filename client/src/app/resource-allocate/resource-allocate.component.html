@@ -1,33 +1,36 @@
 <div>
-    <h1>Manage Resourse Allocation</h1>
+    <h1>Manage Resource Allocation</h1>
 <div>
-    <h2>Add Resourse Allocation</h2>
-    <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+    <h3>Add Resource Allocation</h3>
+    <form action="" [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+        <div>
+        <label for="eventId">Event</label>
+        <select id="eventId" formControlName="eventId">
+            <option value="">Choose Event</option>
+            <option *ngFor="let event of eventList" [value]="event.eventID">{{event.title}}</option>
+        </select>
+        </div>
  
-    <div>
-    <label for="eventId">Event</label>
-    <input type="text" placeholder="Choose Event" formControlName="eventId">
-    <div *ngIf="itemForm.get('eventId')?.invalid && (itemForm.get('eventId')?.dirty || itemForm.get('eventId')?.touched)">
-        <small *ngIf="itemForm.get('eventId')?.errors?.['required']">EventId is required</small>
-    </div>
+        <div>
+            <label for="resourceId">Resource</label>
+            <select id="resourceId" formControlName="resourceId">
+                <option value="">Choose Resource</option>
+                <option *ngFor="let resource of resourceList" [value]="resource.resourceID">{{resource.name}}</option>
+            </select>
+        </div>
  
-    <label for="resourceId">Resource</label>
-    <input type="text" formControlName="Choose Resourse" placeholder="type">
-    <div *ngIf="itemForm.get('resourceId')?.invalid && (itemForm.get('resourceId')?.dirty || itemForm.get('resourceId')?.touched)">
-        <small *ngIf="itemForm.get('resourceId')?.errors?.['required']">ResourceId is required</small>
-    </div>
+        <div>
+            <label for="quantity">Quantity</label>
+            <input type="number" id="quantity" formControlName="quantity">
+            <div *ngIf="itemForm.get('quantity')?.invalid && itemForm.get('quantity')?.touched">
+                <div *ngIf="itemForm.get('quantity')?.errors?.['required']">Quantity is required.</div>
+                <div *ngIf="itemForm.get('quantity')?.errors?.['min']">Minimum quantity is 1.</div>
+            </div>
+        </div>
+        <div *ngIf="showMessage">{{responseMessage}}</div>
+        <div *ngIf="showError">{{errorMessage}}</div>
  
-    <label for="quantity">Quantity</label>
-    <input type="number" formControlName="Choose Resourse" placeholder="quantity">
-    <div *ngIf="itemForm.get('quantity')?.invalid && (itemForm.get('quantity')?.dirty || itemForm.get('quantity')?.touched)">
-        <small *ngIf="itemForm.get('quantity')?.errors?.['required']">Quantity is required</small>
-    </div>
-
+        <button type="submit">Submit</button>
+    </form>
 </div>
-
-<button type="submit" value="submit">Submit</button>
-<div *ngIf="showMessage">{{responseMessage}}</div>
-<div *ngIf="showError">{{errorMessage}}</div>
-</form>
 </div>
-
